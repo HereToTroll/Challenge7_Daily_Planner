@@ -21,10 +21,13 @@ test.text(dayjs().format('dddd'));
 
 
 // Get current time
+let myData;
 const allLabels = $("a");
+const saveButtons = $(".save");
+const allInputs = $("input");
 var today = new Date();
 let hours = today.getHours(); // Finding out current hour.
-// let hours = 10;
+// let hours = 13;
 
 var currentTime = today.getHours() + ":" + today.getMinutes();
 
@@ -46,10 +49,30 @@ $("a").each(function(index){
         
         $("a").eq(index).addClass("bg-success");
     }
-
 })
    
+// console.log($(".save")); 
+// console.log(allInputs);
 
 
+    
+    // if (allInputs[index].value !== ""){
+    //    const myData = localStorage.setItem("toDo",allInputs[index].value) ;     
+    //    console.log(myData[index]);
+    // }
+    
+// })
 
+const save = function() {
+    allInputs.each(function(key,value){
+    myData = this.innerHTML;
+    localStorage.setItem("toDo",myData);
+    console.log(myData);
+    // myData = localStorage.setItem("toDo",allInputs.eq(key).value);
+    // localStorage.setItem("toDo",myData);
+    
+}) 
+}
+saveButtons.on("click",save);
+// saveButtons.each(save())
 
