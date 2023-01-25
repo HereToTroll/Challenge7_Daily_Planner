@@ -65,7 +65,7 @@ $("a").each(function(index){
 
 const save = function() {
     allInputs.each(function(key,value){
-    myData = this.innerHTML;
+    myData = this.value;
     localStorage.setItem("toDo",myData);
     console.log(myData);
     // myData = localStorage.setItem("toDo",allInputs.eq(key).value);
