@@ -63,16 +63,27 @@ $("a").each(function(index){
     
 // })
 
+const show = function() {
+    for (let i=0; i < localStorage.length; i++){
+        // $("input").eq(i).text(localStorage.key(i));
+        console.log(localStorage.key(i));
+    }
+}
+
+
 const save = function() {
-    allInputs.each(function(key,value){
-    myData = this.value;
-    localStorage.setItem("toDo",myData);
+    let btnId = parseInt($(this).attr("id"));
+    
+    // myData = this.value;
+    // localStorage.setItem("toDo",myData);
+    myData = $("input").eq(btnId).val();
+    localStorage.setItem(btnId,myData);
     console.log(myData);
     // myData = localStorage.setItem("toDo",allInputs.eq(key).value);
     // localStorage.setItem("toDo",myData);
     
-}) 
 }
+show();
 saveButtons.on("click",save);
 // saveButtons.each(save())
 
