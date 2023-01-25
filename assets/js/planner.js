@@ -1,32 +1,19 @@
 
 
-let test = $("#currentDay");
+let timeNow = $("#currentDay");
 
-test.text(dayjs().format('dddd'));
-
-// * Display the current day at the top of the calender when a user opens the planner. +++
- 
-// * Present timeblocks for standard business hours when the user scrolls down. 
-
- 
-// * Color-code each timeblock based on past, present, and future when the timeblock is viewed.
-
-
-
-// * Allow a user to enter an event when they click a timeblock
- // on click of li element. (check class activities).
-// * Save the event in local storage when the save button is clicked in that timeblock.
-    //Function to add new event and save it in local storage.
-// * Persist events between refreshes of a page
-
+timeNow.text(dayjs().format('dddd, MMMM d'));
 
 // Get current time
 let myData;
+// Set some jQuery variables, but I find easier to select them  as they are.
 const allLabels = $("a");
 const saveButtons = $(".save");
 const allInputs = $("input");
 var today = new Date();
 let hours = today.getHours(); // Finding out current hour.
+
+// I have left line below for testing to see if colouring actually works.
 // let hours = 13;
 
 var currentTime = today.getHours() + ":" + today.getMinutes();
@@ -34,6 +21,7 @@ var currentTime = today.getHours() + ":" + today.getMinutes();
 
 
 //colouring times depending on current hour. 
+
 $("a").each(function(index){
     // console.log(index);
     let labelHoursIndex = $("a").eq(index);
@@ -51,18 +39,8 @@ $("a").each(function(index){
     }
 })
    
-// console.log($(".save")); 
-// console.log(allInputs);
 
-
-    
-    // if (allInputs[index].value !== ""){
-    //    const myData = localStorage.setItem("toDo",allInputs[index].value) ;     
-    //    console.log(myData[index]);
-    // }
-    
-// })
-
+// Function to get saved data from Local storage
 const show = function() {
     for (let i=0; i < localStorage.length; i++){
         $("input").eq(i).val(localStorage.getItem(i));
@@ -73,7 +51,7 @@ const show = function() {
     }
 }
 
-
+// Function to save data in the local storage
 const save = function() {
     let btnId = parseInt($(this).attr("id"));
     
@@ -87,6 +65,7 @@ const save = function() {
     
 }
 show();
+// Event listener for every save button.
 saveButtons.on("click",save);
 // saveButtons.each(save())
 
