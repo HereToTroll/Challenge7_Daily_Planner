@@ -65,8 +65,11 @@ $("a").each(function(index){
 
 const show = function() {
     for (let i=0; i < localStorage.length; i++){
-        // $("input").eq(i).text(localStorage.key(i));
-        console.log(localStorage.key(i));
+        $("input").eq(i).val(localStorage.getItem(i));
+        console.log(localStorage.getItem(i));
+        
+       
+        
     }
 }
 
